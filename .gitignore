@@ -44,3 +44,4 @@ ENV/
 *.test.md
 .scratch/
 .notes/
+.claude/settings.local.json
