@@ -7,6 +7,7 @@ Plugin marketplace for Claude Code.
 | Name | Version | Description |
 |------|---------|-------------|
 | [chrome-extension-wxt](./chrome-extension-wxt) | 1.1.0 | Skill: Build Chrome extensions with WXT framework |
+| [cloudflare-workers](./cloudflare-workers) | 1.0.0 | Skill: Rapid development with Cloudflare Workers - build and deploy serverless applications |
 | [gh-cli](./gh-cli) | 1.0.2 | Skill: GitHub CLI for remote repo analysis and code discovery |
 
 ## Installation
@@ -18,6 +19,7 @@ Plugin marketplace for Claude Code.
 # Install plugins
 /plugin install gh-cli@tenequm-plugins
 /plugin install chrome-extension-wxt@tenequm-plugins
+/plugin install cloudflare-workers@tenequm-plugins
 ```
 
 ## Contributing

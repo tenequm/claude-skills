@@ -27,6 +27,15 @@
       ]
     },
     {
+      "name": "cloudflare-workers",
+      "source": "./",
+      "description": "Skill: Rapid development with Cloudflare Workers - build and deploy serverless applications",
+      "version": "1.0.0",
+      "skills": [
+        "./cloudflare-workers/skill"
+      ]
+    },
+    {
       "name": "skill-finder",
       "source": "./",
       "description": "Skill: Find and evaluate Claude skills using semantic search and quality assessment",

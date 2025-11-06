@@ -2,3 +2,4 @@ packages:
   - 'gh-cli'
   - 'chrome-extension-wxt'
   - 'skill-finder'
+  - 'cloudflare-workers'

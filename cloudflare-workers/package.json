@@ -1,0 +1,9 @@
+{
+  "name": "cloudflare-workers-skill",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Rapid development with Cloudflare Workers - build and deploy serverless applications on Cloudflare's global network",
+  "scripts": {
+    "validate": "python3 ../../../.claude/skills/skill-creator/scripts/quick_validate.py ./skill"
+  }
+}
