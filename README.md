@@ -4,10 +4,10 @@ Personal collection of Claude Code skills for various development tasks.
 
 ## Skills
 
-| Name | Description | Last Updated |
-|------|-------------|--------------|
-| [chrome-extension-wxt](./chrome-extension-wxt) | Build modern Chrome extensions using WXT framework | 05 Nov 2025 |
-| [gh-cli](./gh-cli) | GitHub CLI for remote repository analysis, file fetching, and discovering trending repos | 05 Nov 2025 |
+| Name | Description |
+|------|-------------|
+| [chrome-extension-wxt](./chrome-extension-wxt) | Skill: Build Chrome extensions with WXT framework |
+| [gh-cli](./gh-cli) | Skill: Full GitHub CLI capabilities for repos & code |
 
 ## Installation
 
