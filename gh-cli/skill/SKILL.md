@@ -5,141 +5,137 @@ description: GitHub CLI for remote repository analysis, file fetching, codebase 
 
 # GitHub CLI - Remote Analysis & Discovery
 
-Focused on efficient remote repository analysis and discovering trending content on GitHub.
+Remote repository operations, codebase comparison, and code discovery without cloning.
 
-## Remote Repository Analysis
+## When to Use
 
-### Fetch Files Without Cloning
+- Analyze repositories without cloning
+- Compare codebases side-by-side
+- Fetch specific files from any repo
+- Find trending repositories and code patterns
+- Search code across GitHub
+
+## Quick Operations
+
+### Fetch a file remotely
 
 ```bash
-# Get directory listing
-gh api repos/OWNER/REPO/contents/PATH
-
-# Fetch file content (decode base64)
 gh api repos/OWNER/REPO/contents/path/file.ts | jq -r '.content' | base64 -d
-
-# Get entire file tree recursively
-gh api repos/OWNER/REPO/git/trees/main?recursive=1
 ```
 
-### Compare Two Codebases
-
-**Example:** "Are solana-fm/explorer-kit and tenequm/solana-idls providing the same functionality?"
-
-**Workflow:**
-
-1. **Fetch directory structures:**
-   ```bash
-   gh api repos/solana-fm/explorer-kit/contents/packages/explorerkit-idls > repo1.json
-   gh api repos/tenequm/solana-idls/contents/ > repo2.json
-   ```
-
-2. **Compare file lists:**
-   ```bash
-   jq -r '.[].name' repo1.json > repo1-files.txt
-   jq -r '.[].name' repo2.json > repo2-files.txt
-   diff repo1-files.txt repo2-files.txt
-   ```
-
-3. **Fetch key files for comparison:**
-   ```bash
-   # Compare package.json dependencies
-   gh api repos/solana-fm/explorer-kit/contents/packages/explorerkit-idls/package.json | jq -r '.content' | base64 -d > repo1-pkg.json
-   gh api repos/tenequm/solana-idls/contents/package.json | jq -r '.content' | base64 -d > repo2-pkg.json
-
-   # Compare main entry points
-   gh api repos/solana-fm/explorer-kit/contents/packages/explorerkit-idls/src/index.ts | jq -r '.content' | base64 -d > repo1-index.ts
-   gh api repos/tenequm/solana-idls/contents/src/index.ts | jq -r '.content' | base64 -d > repo2-index.ts
-   ```
-
-4. **Analyze:**
-   - Compare exports and API surface
-   - Compare dependencies
-   - Identify unique features in each repo
-
-### Useful Remote Analysis Patterns
+### Get directory listing
 
 ```bash
-# Check if file exists
-gh api repos/OWNER/REPO/contents/path/file.ts 2>/dev/null && echo "exists" || echo "not found"
-
-# Get latest commit for specific file
-gh api repos/OWNER/REPO/commits?path=src/index.ts | jq -r '.[0].sha'
-
-# Compare file across branches
-gh api repos/OWNER/REPO/contents/file.ts?ref=main | jq -r '.content' | base64 -d > main.ts
-gh api repos/OWNER/REPO/contents/file.ts?ref=dev | jq -r '.content' | base64 -d > dev.ts
-diff main.ts dev.ts
-
-# Get file from specific commit
-gh api repos/OWNER/REPO/contents/file.ts?ref=abc123 | jq -r '.content' | base64 -d
+gh api repos/OWNER/REPO/contents/PATH
 ```
 
-## Discovering Trending Content
-
-### Find Trending Repositories
+### Search code
 
 ```bash
-# Most starred repositories (all time)
+gh search code "pattern" --language=typescript
+```
+
+### Find trending repos
+
+```bash
+gh search repos --language=rust --sort stars --order desc
+```
+
+## Compare Two Codebases
+
+Systematic workflow for comparing repositories to identify similarities and differences.
+
+**Example use**: "Compare solana-fm/explorer-kit and tenequm/solana-idls"
+
+### Step 1: Fetch directory structures
+
+```bash
+gh api repos/OWNER-A/REPO-A/contents/PATH > repo1.json
+gh api repos/OWNER-B/REPO-B/contents/PATH > repo2.json
+```
+
+If comparing a monorepo package, specify the path (e.g., `packages/explorerkit-idls`).
+
+### Step 2: Compare file lists
+
+```bash
+jq -r '.[].name' repo1.json > repo1-files.txt
+jq -r '.[].name' repo2.json > repo2-files.txt
+diff repo1-files.txt repo2-files.txt
+```
+
+Shows files unique to each repo and common files.
+
+### Step 3: Fetch key files for comparison
+
+Compare package dependencies:
+
+```bash
+gh api repos/OWNER-A/REPO-A/contents/package.json | jq -r '.content' | base64 -d > repo1-pkg.json
+gh api repos/OWNER-B/REPO-B/contents/package.json | jq -r '.content' | base64 -d > repo2-pkg.json
+```
+
+Compare main entry points:
+
+```bash
+gh api repos/OWNER-A/REPO-A/contents/src/index.ts | jq -r '.content' | base64 -d > repo1-index.ts
+gh api repos/OWNER-B/REPO-B/contents/src/index.ts | jq -r '.content' | base64 -d > repo2-index.ts
+```
+
+### Step 4: Analyze differences
+
+Compare the fetched files to identify:
+
+**API Surface**
+- What functions/classes are exported?
+- Are the APIs similar or completely different?
+
+**Dependencies**
+- Shared dependencies (same approach)
+- Different dependencies (different implementation)
+
+**Unique Features**
+- Features only in repo1
+- Features only in repo2
+
+For detailed comparison strategies, see [references/comparison.md](references/comparison.md).
+
+## Discover Trending Content
+
+### Find trending repositories
+
+```bash
+# Most starred repos
 gh search repos --sort stars --order desc --limit 20
 
-# Trending repos in specific language
+# Trending in specific language
 gh search repos --language=rust --sort stars --order desc
 
-# Recently popular (created in last month, sorted by stars)
+# Recently popular (created in last month)
 gh search repos "created:>2024-10-01" --sort stars --order desc
 
 # Trending in specific topic
 gh search repos "topic:machine-learning" --sort stars --order desc
-
-# Most active repos (by recent updates)
-gh search repos --sort updated --order desc
-
-# Most forked repos
-gh search repos --sort forks --order desc
-
-# Combined filters: Popular Solana repos updated recently
-gh search repos "solana in:name,description stars:>100" --sort updated --order desc
 ```
 
-### Discover Popular Code Patterns
+### Discover popular code patterns
 
 ```bash
 # Find popular implementations
 gh search code "function useWallet" --language=typescript --sort indexed
 
-# Most starred code in specific language
-gh search code "async fn main" --language=rust
-
 # Find code in popular repos only
 gh search code "implementation" "stars:>1000"
 
-# Search specific organization's popular code
+# Search specific organization
 gh search code "authentication" --owner=anthropics
-
-# Find recent code examples
-gh search code "React hooks" "created:>2024-01-01"
 ```
 
-### Advanced Discovery Queries
+For complete discovery queries and patterns, see [references/discovery.md](references/discovery.md).
 
-```bash
-# Repos with many stars but few forks (unique ideas)
-gh search repos "stars:>1000 forks:<100"
+## Search Basics
 
-# Active repos (many recent commits)
-gh search repos "pushed:>2024-10-01" --sort stars
-
-# Find repos by file presence (e.g., has Dockerfile)
-gh search code "filename:Dockerfile" --sort indexed
-
-# Popular repos in multiple topics
-gh search repos "topic:blockchain topic:typescript" --sort stars
-```
-
-## Search and Discovery
-
-### Code Search
+### Code search
 
 ```bash
 # Search across all repositories
@@ -152,7 +148,7 @@ gh search code "auth" --owner=anthropics
 gh search issues -- "bug report -label:wontfix"
 ```
 
-### Issue & PR Search
+### Issue & PR search
 
 ```bash
 # Find open bugs
@@ -162,11 +158,11 @@ gh search issues --label=bug --state=open
 gh search issues --assignee=@me --state=open
 ```
 
-For comprehensive search syntax, see [references/search.md](references/search.md)
+For advanced search syntax, see [references/search.md](references/search.md).
 
 ## Special Syntax
 
-### Field Name Inconsistencies
+### Field name inconsistencies
 
 **IMPORTANT:** GitHub CLI uses inconsistent field names across commands:
 
@@ -176,65 +172,50 @@ For comprehensive search syntax, see [references/search.md](references/search.md
 | Forks | `forkCount` | `forksCount` |
 
 **Examples:**
+
 ```bash
 # ✅ Correct for gh repo view
 gh repo view owner/repo --json stargazerCount,forkCount
 
 # ✅ Correct for gh search repos
 gh search repos "query" --json stargazersCount,forksCount
-
-# ❌ Wrong - will error
-gh repo view owner/repo --json stargazersCount
 ```
 
-### Excluding Search Results
+### Excluding search results
 
 When using negative qualifiers (like `-label:bug`), use `--` to prevent the hyphen from being interpreted as a flag:
 
-**Unix/Linux/Mac:**
 ```bash
 gh search issues -- "query -label:bug"
 ```
 
-**PowerShell:**
-```bash
-gh --% search issues -- "query -label:bug"
-```
+For more syntax gotchas, see [references/syntax.md](references/syntax.md).
 
-## Reference Files
+## Advanced Workflows
 
-Comprehensive documentation organized by topic:
+For detailed documentation on specific workflows:
 
-- **[search.md](references/search.md)** - Advanced search syntax for code, issues, PRs, repos
-- **[repositories.md](references/repositories.md)** - Repository operations and management
-- **[pull_requests.md](references/pull_requests.md)** - Pull request workflows and operations
-- **[issues.md](references/issues.md)** - Issue creation and management
-- **[actions.md](references/actions.md)** - GitHub Actions workflows and runs
-- **[releases.md](references/releases.md)** - Release creation and management
-- **[extensions.md](references/extensions.md)** - CLI extension management
-- **[getting_started.md](references/getting_started.md)** - Installation and authentication setup
-- **[other.md](references/other.md)** - Auth, aliases, config, additional commands
+**Core Workflows:**
+- [remote-analysis.md](references/remote-analysis.md) - Advanced file fetching patterns
+- [comparison.md](references/comparison.md) - Complete codebase comparison guide
+- [discovery.md](references/discovery.md) - All trending and discovery queries
+- [search.md](references/search.md) - Advanced search syntax
+- [syntax.md](references/syntax.md) - Special syntax and command quirks
 
-## Key Environment Variables
+**GitHub Operations:**
+- [repositories.md](references/repositories.md) - Repository operations
+- [pull_requests.md](references/pull_requests.md) - PR workflows
+- [issues.md](references/issues.md) - Issue management
+- [actions.md](references/actions.md) - GitHub Actions
+- [releases.md](references/releases.md) - Release management
 
-```bash
-# Authentication token
-export GH_TOKEN="your_token"
-
-# Default repository (format: OWNER/REPO)
-export GH_REPO="owner/repo"
-
-# Disable interactive prompts for scripting
-export GH_PROMPT_DISABLED=1
-
-# Custom editor for text authoring
-export GH_EDITOR="vim"
-```
-
-See [other.md](references/other.md) for complete environment variable reference.
+**Setup & Configuration:**
+- [getting_started.md](references/getting_started.md) - Installation and auth
+- [other.md](references/other.md) - Environment variables, aliases, config
+- [extensions.md](references/extensions.md) - CLI extensions
 
 ## Resources
 
-- Official documentation: https://cli.github.com/manual/
-- GitHub CLI repository: https://github.com/cli/cli
-- GitHub search syntax: https://docs.github.com/en/search-github
+- Official docs: https://cli.github.com/manual/
+- GitHub CLI: https://github.com/cli/cli
+- Search syntax: https://docs.github.com/en/search-github

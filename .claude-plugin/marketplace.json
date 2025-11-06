@@ -5,7 +5,7 @@
     "email": "misha@kolesnik.io"
   },
   "metadata": {
-    "description": "Personal collection of Claude Code plugins for various development tasks."
+    "description": "Plugin marketplace for Claude Code."
   },
   "plugins": [
     {
