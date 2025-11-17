@@ -61,6 +61,12 @@
       "skills": [
         "./uv-ruff-python-tools/skill"
       ]
+    },
+    {
+      "name": "solana",
+      "source": "./solana",
+      "description": "Comprehensive Solana development toolkit: build programs with Anchor/native Rust and audit for security vulnerabilities",
+      "version": "0.2.0"
     }
   ]
 }

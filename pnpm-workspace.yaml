@@ -5,3 +5,4 @@ packages:
   - 'cloudflare-workers'
   - 'skill-factory'
   - 'uv-ruff-python-tools'
+  - 'solana'
