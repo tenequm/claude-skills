@@ -55,18 +55,13 @@ You are assisting with maintaining a public repository of Claude Code skills. Th
 ```
 
 **Current Plugins:**
-1. **chrome-extension-wxt** - Chrome extension development with WXT framework
-   - React 19 integration
-   - Chrome 140+ APIs
-   - Modern UI libraries (shadcn/ui, Mantine)
-   - Quality: 10/10 ✅
-
-2. **gh-cli** - GitHub CLI for remote repository operations
-   - Remote repository analysis
-   - File fetching without cloning
-   - Codebase comparison
-   - Trending repositories discovery
-   - Quality: 10/10 ✅
+1. **chrome-extension-wxt** (1.1.0) - Chrome extensions with WXT framework
+2. **cloudflare-workers** (2.0.0) - Cloudflare Workers serverless development
+3. **gh-cli** (1.1.0) - GitHub CLI for remote repo analysis
+4. **skill-factory** (0.1.0) - Autonomous skill creation with quality assurance
+5. **skill-finder** (1.1.0) - Find and evaluate Claude skills
+6. **solana** (0.1.0) - Solana development (Anchor/native Rust) and security auditing
+7. **uv-ruff-python-tools** (0.1.0) - Python with uv and ruff
 
 **Package Management:**
 This repository uses pnpm workspaces and Changesets for version management:

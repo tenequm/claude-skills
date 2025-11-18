@@ -6,11 +6,13 @@ Plugin marketplace for Claude Code.
 
 | Name | Version | Description |
 |------|---------|-------------|
-| [chrome-extension-wxt](./chrome-extension-wxt) | 1.1.0 | Skill: Build Chrome extensions with WXT framework |
-| [cloudflare-workers](./cloudflare-workers) | 1.0.0 | Skill: Rapid development with Cloudflare Workers - build and deploy serverless applications |
-| [gh-cli](./gh-cli) | 1.0.2 | Skill: GitHub CLI for remote repo analysis and code discovery |
-| [skill-factory](./skill-factory) | 0.1.0 | Skill: Autonomous skill creation agent with guaranteed quality |
-| [uv-ruff-python-tools](./uv-ruff-python-tools) | 0.1.0 | Skill: Modern Python development with uv (10-100x faster package manager) and ruff (extremely fast linter/formatter) |
+| [chrome-extension-wxt](./chrome-extension-wxt) | 1.1.0 | Build Chrome extensions with WXT framework |
+| [cloudflare-workers](./cloudflare-workers) | 2.0.0 | Cloudflare Workers serverless development |
+| [gh-cli](./gh-cli) | 1.1.0 | GitHub CLI for remote repo analysis |
+| [skill-factory](./skill-factory) | 0.1.0 | Autonomous skill creation with quality assurance |
+| [skill-finder](./skill-finder) | 1.1.0 | Find and evaluate Claude skills |
+| [solana](./solana) | 0.1.0 | Solana development (Anchor/native Rust) and security auditing |
+| [uv-ruff-python-tools](./uv-ruff-python-tools) | 0.1.0 | Python with uv package manager and ruff linter |
 
 ## Installation
 
@@ -19,10 +21,12 @@ Plugin marketplace for Claude Code.
 /plugin marketplace add tenequm/claude-plugins
 
 # Install plugins
-/plugin install gh-cli@tenequm-plugins
 /plugin install chrome-extension-wxt@tenequm-plugins
 /plugin install cloudflare-workers@tenequm-plugins
+/plugin install gh-cli@tenequm-plugins
 /plugin install skill-factory@tenequm-plugins
+/plugin install skill-finder@tenequm-plugins
+/plugin install solana@tenequm-plugins
 /plugin install uv-ruff-python-tools@tenequm-plugins
 ```
 

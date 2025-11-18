@@ -1,9 +1,0 @@
-{
-  "name": "solana",
-  "version": "0.1.0",
-  "description": "Comprehensive Solana development toolkit with skills for building programs (Anchor/native Rust) and security auditing, plus proactive security review agent",
-  "author": {
-    "name": "Misha Kolesnik",
-    "email": "misha@kolesnik.io"
-  }
-}
