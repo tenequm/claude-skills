@@ -20,7 +20,17 @@ importers:
 
   chrome-extension-wxt: {}
 
+  cloudflare-workers: {}
+
   gh-cli: {}
+
+  skill-factory: {}
+
+  skill-finder: {}
+
+  solana: {}
+
+  uv-ruff-python-tools: {}
 
 packages:
 
