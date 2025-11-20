@@ -32,6 +32,8 @@ importers:
 
   styling-with-tailwind: {}
 
+  tanstack-query: {}
+
   uv-ruff-python-tools: {}
 
 packages:

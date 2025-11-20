@@ -81,7 +81,7 @@
       "name": "tanstack-query",
       "source": "./",
       "description": "Skill: Master TanStack Query (React Query) v5 for server state management in React applications",
-      "version": "0.0.0",
+      "version": "0.1.0",
       "skills": [
         "./tanstack-query/skill"
       ]
