@@ -6,3 +6,4 @@ packages:
   - 'skill-factory'
   - 'uv-ruff-python-tools'
   - 'solana'
+  - 'styling-with-tailwind'

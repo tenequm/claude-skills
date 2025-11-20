@@ -12,6 +12,7 @@ Plugin marketplace for Claude Code.
 | [skill-factory](./skill-factory) | 0.1.0 | Autonomous skill creation with quality assurance |
 | [skill-finder](./skill-finder) | 1.1.0 | Find and evaluate Claude skills |
 | [solana](./solana) | 0.1.0 | Solana development (Anchor/native Rust) and security auditing |
+| [styling-with-tailwind](./styling-with-tailwind) | 0.1.0 | Build beautiful UIs with Tailwind CSS and shadcn/ui |
 | [uv-ruff-python-tools](./uv-ruff-python-tools) | 0.1.0 | Python with uv package manager and ruff linter |
 
 ## Installation
@@ -27,6 +28,7 @@ Plugin marketplace for Claude Code.
 /plugin install skill-factory@tenequm-plugins
 /plugin install skill-finder@tenequm-plugins
 /plugin install solana@tenequm-plugins
+/plugin install styling-with-tailwind@tenequm-plugins
 /plugin install uv-ruff-python-tools@tenequm-plugins
 ```
 
