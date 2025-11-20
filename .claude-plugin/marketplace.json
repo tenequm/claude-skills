@@ -48,7 +48,7 @@
       "name": "skill-factory",
       "source": "./",
       "description": "Skill: Autonomous skill creation with automatic quality assurance - analyzes requests, selects optimal creation method, and delivers production-ready skills",
-      "version": "0.1.0",
+      "version": "0.2.0",
       "skills": [
         "./skill-factory/skill"
       ]
