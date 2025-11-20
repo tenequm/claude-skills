@@ -63,44 +63,79 @@ Execute a manual release of all plugins with pending changesets.
    ```
 
 10. **Create git tags for each released package:**
-    Read each plugin's package.json to get the version, then create tags:
+
+    **Option A: Use the helper script (recommended):**
     ```bash
-    # For each plugin directory with a CHANGELOG.md that was modified
-    git tag "plugin-name@version"
+    bash .claude/commands/scripts/create-release-tags.sh
     ```
 
-    Use this pattern to find released packages and create tags:
+    **Option B: Manual tag creation:**
+    First, identify which packages were released by checking for CHANGELOG.md files:
     ```bash
-    # Get list of plugins with version changes
-    for pkg in */package.json; do
-      dir=$(dirname "$pkg")
-      name=$(jq -r '.name' "$pkg")
-      version=$(jq -r '.version' "$pkg")
-      if [ -f "$dir/CHANGELOG.md" ]; then
-        tag="${name}@${version}"
-        if ! git tag -l "$tag" | grep -q .; then
-          git tag "$tag"
-          echo "Created tag: $tag"
-        fi
-      fi
-    done
+    find . -maxdepth 2 -name "CHANGELOG.md" -not -path "./.claude/*" | sed 's|/CHANGELOG.md||' | sed 's|^\./||'
     ```
+
+    Then, for each package directory found, create a tag:
+    ```bash
+    # Example for a single package (repeat for each found):
+    pkg_dir="skill-factory"
+    name=$(jq -r '.name' "$pkg_dir/package.json")
+    version=$(jq -r '.version' "$pkg_dir/package.json")
+    tag="${name}@${version}"
+
+    # Check if tag already exists
+    if git tag -l "$tag" | grep -q .; then
+      echo "Tag already exists: $tag"
+    else
+      git tag "$tag"
+      echo "Created tag: $tag"
+    fi
+    ```
+
+    **Note:** The helper script automates tag creation for all packages with CHANGELOG.md files. Use manual creation if you need more control over which tags to create.
 
 11. **Push commits and tags:**
     ```bash
     git push origin main --follow-tags
     ```
 
-12. **Create GitHub releases for each new tag:**
-    For each tag created, extract the changelog entry and create a release:
+    If any tags weren't pushed with --follow-tags, push them individually:
     ```bash
-    # For each new tag
-    gh release create "tag-name" \
-      --title "tag-name" \
-      --notes "Changelog content for this version"
+    # Example: Push specific tag if needed
+    git push origin skill-factory-skill@0.2.0
     ```
 
-    Extract changelog content by reading from the ## version header to the next ## header.
+12. **Create GitHub releases for each new tag:**
+
+    **Option A: Use the helper script (recommended):**
+    ```bash
+    bash .claude/commands/scripts/create-github-releases.sh
+    ```
+
+    **Option B: Manual release creation:**
+    For each tag created, extract the changelog entry and create a release.
+
+    First, read the CHANGELOG.md to extract the content for the new version:
+    ```bash
+    # Read the CHANGELOG.md file to get the release notes
+    # For example, for skill-factory v0.2.0:
+    cat skill-factory/CHANGELOG.md
+    ```
+
+    Then create the GitHub release with the extracted notes:
+    ```bash
+    # Example for skill-factory-skill@0.2.0
+    gh release create "skill-factory-skill@0.2.0" \
+      --title "skill-factory-skill@0.2.0" \
+      --notes "## 0.2.0
+
+### Minor Changes
+
+- Add comprehensive Anthropic best practices documentation
+  - [Detailed changelog content from CHANGELOG.md]"
+    ```
+
+    **Note:** The helper script automates release creation by extracting changelog content and creating releases for all new tags. Extract the content between the version header (e.g., `## 0.2.0`) and the next version header (or end of file) from the CHANGELOG.md file if creating releases manually.
 
 ## Post-Release
 
