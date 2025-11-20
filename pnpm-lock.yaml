@@ -30,6 +30,8 @@ importers:
 
   solana: {}
 
+  styling-with-tailwind: {}
+
   uv-ruff-python-tools: {}
 
 packages:
