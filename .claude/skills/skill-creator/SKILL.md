@@ -15,6 +15,23 @@ specialized knowledge, workflows, and tools. Think of them as "onboarding guides
 domains or tasks—they transform Claude from a general-purpose agent into a specialized agent
 equipped with procedural knowledge that no model can fully possess.
 
+### Anthropic's Official Best Practices
+
+For comprehensive guidance on creating effective skills, see:
+
+- **[references/overview.md](references/overview.md)** - Complete overview of Agent Skills architecture, progressive disclosure, and how Skills work across different platforms (API, Claude Code, Agent SDK, claude.ai)
+- **[references/quickstart.md](references/quickstart.md)** - Quick tutorial on using pre-built Agent Skills in the Claude API with practical code examples
+- **[references/best-practices.md](references/best-practices.md)** - Detailed authoring best practices including:
+  - Core principles (conciseness, degrees of freedom, model testing)
+  - Skill structure and naming conventions
+  - Progressive disclosure patterns
+  - Workflows and feedback loops
+  - Evaluation and iteration strategies
+  - Common patterns and anti-patterns
+  - Advanced topics for Skills with executable code
+
+These references provide Anthropic's official guidance and should be consulted when creating production-quality skills.
+
 ### What Skills Provide
 
 1. Specialized workflows - Multi-step procedures for specific domains
@@ -155,6 +172,8 @@ After initialization, customize or remove the generated SKILL.md and example fil
 ### Step 4: Edit the Skill
 
 When editing the (newly-generated or existing) skill, remember that the skill is being created for another instance of Claude to use. Focus on including information that would be beneficial and non-obvious to Claude. Consider what procedural knowledge, domain-specific details, or reusable assets would help another Claude instance execute these tasks more effectively.
+
+**Important**: Consult [references/best-practices.md](references/best-practices.md) for detailed authoring guidance on writing effective descriptions, organizing content with progressive disclosure, creating workflows, and avoiding common anti-patterns.
 
 #### Start with Reusable Skill Contents
 

@@ -2,7 +2,7 @@
 name: skill-factory
 description: Autonomous skill creation agent that analyzes requests, automatically selects the best creation method (documentation scraping via Skill_Seekers, manual TDD construction, or hybrid), ensures quality compliance with Anthropic best practices, and delivers production-ready skills without requiring user decision-making or navigation
 when_to_use: when you need to create any Claude skill and want it done automatically with guaranteed quality - works for documentation-based skills, GitHub repositories, PDFs, custom workflows, or hybrid approaches
-version: 0.0.0
+version: 0.1.0
 ---
 
 # Skill Factory
@@ -14,6 +14,17 @@ version: 0.0.0
 You request a skill, I deliver a production-ready skill with guaranteed quality (score >= 8.0/10).
 
 **No decision-making required. No tool selection. No quality checking. Just results.**
+
+### Anthropic's Official Best Practices
+
+For comprehensive guidance on creating effective skills, see:
+
+- **[references/overview.md](references/overview.md)** - Complete overview of Agent Skills architecture, progressive disclosure, and how Skills work across different platforms (API, Claude Code, Agent SDK, claude.ai)
+- **[references/quickstart.md](references/quickstart.md)** - Quick tutorial on using pre-built Agent Skills in the Claude API with practical code examples
+- **[references/best-practices.md](references/best-practices.md)** - Detailed authoring best practices including core principles, skill structure, progressive disclosure patterns, workflows, evaluation strategies, and common patterns
+- **[references/anthropic-best-practices.md](references/anthropic-best-practices.md)** - Quality scoring system (10/10 criteria) used by skill-factory
+
+These references provide Anthropic's official guidance and are consulted during the quality assurance phase.
 
 ## Usage
 
@@ -150,6 +161,8 @@ while quality_score < 8.0:
 - ✅ Examples: Concrete code samples, not abstract
 - ✅ Structure: Well-organized, clear sections
 - ✅ Name: Follows conventions (lowercase, hyphens, descriptive)
+
+**Important**: The quality assurance process consults [references/best-practices.md](references/best-practices.md) for Anthropic's complete authoring guidelines and [references/anthropic-best-practices.md](references/anthropic-best-practices.md) for the 10-point scoring criteria.
 
 ### Phase 4: Testing (Automatic)
 
@@ -327,9 +340,14 @@ pip install -r requirements.txt
 
 ## Reference Files
 
-For deep understanding (optional reading):
+**Anthropic Official Documentation:**
+- references/overview.md - Agent Skills architecture, progressive disclosure, and platform details
+- references/quickstart.md - Quick tutorial on using pre-built Agent Skills in the Claude API
+- references/best-practices.md - Comprehensive authoring guidelines from Anthropic
+- references/anthropic-best-practices.md - Quality scoring system (10/10 criteria)
+
+**Skill Factory Implementation Details:**
 - references/obra-tdd-methodology.md - Full TDD testing approach
-- references/anthropic-best-practices.md - Complete quality guidelines
 - references/skill-seekers-integration.md - Automation documentation
 - references/request-analysis.md - How requests are parsed
 - references/quality-loops.md - Enhancement algorithms
