@@ -45,3 +45,7 @@ ENV/
 .scratch/
 .notes/
 .claude/settings.local.json
+
+# Nx
+.nx/cache
+.nx/workspace-data

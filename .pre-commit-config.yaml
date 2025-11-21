@@ -1,10 +1,10 @@
 repos:
-  # Validate skill structure
+  # Validate skill structure with Nx (uses cache)
   - repo: local
     hooks:
       - id: validate-skills
         name: Validate skill structure
-        entry: pnpm validate
+        entry: nx affected -t validate
         language: system
         pass_filenames: false
         files: '(SKILL\.md|references/.*\.md)$'

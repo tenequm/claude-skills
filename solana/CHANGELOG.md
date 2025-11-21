@@ -1,3 +1,9 @@
+## 0.2.0 (2025-11-21)
+
+### 🚀 Features
+
+- **solana:** improve progressive disclosure with focused reference files ([0b7a317](https://github.com/tenequm/claude-plugins/commit/0b7a317))
+
 # solana
 
 ## 0.1.0

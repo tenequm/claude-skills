@@ -1,0 +1,25 @@
+{
+  "name": "skill-finder",
+  "$schema": "../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "skill-finder",
+  "projectType": "library",
+  "targets": {
+    "validate": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "pnpm validate",
+        "cwd": "skill-finder"
+      },
+      "cache": true,
+      "inputs": [
+        "{projectRoot}/skill/**/*.md",
+        "{projectRoot}/package.json"
+      ]
+    }
+  },
+  "release": {
+    "version": {
+      "generator": "@nx/js:release-version"
+    }
+  }
+}
