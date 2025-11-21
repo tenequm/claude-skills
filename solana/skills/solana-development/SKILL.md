@@ -124,9 +124,16 @@ Essential knowledge for all Solana developers, regardless of framework:
 
 ### Program Integration
 
-- **[tokens.md](references/tokens.md)** - SPL Token and Token-2022 integration, mint/transfer patterns
-- **[testing.md](references/testing.md)** - Mollusk testing framework (fast, deterministic tests)
+- **[tokens-overview.md](references/tokens-overview.md)** - Token account structures and ATAs
+- **[tokens-operations.md](references/tokens-operations.md)** - Create, mint, transfer, burn, close operations
+- **[tokens-validation.md](references/tokens-validation.md)** - Account validation patterns
+- **[tokens-2022.md](references/tokens-2022.md)** - Token Extensions Program features
+- **[tokens-patterns.md](references/tokens-patterns.md)** - Common patterns and security
+- **[testing-overview.md](references/testing-overview.md)** - Test pyramid and strategy
+- **[testing-frameworks.md](references/testing-frameworks.md)** - Mollusk, Anchor test, Native Rust
+- **[testing-practices.md](references/testing-practices.md)** - Best practices and patterns
 - **[deployment.md](references/deployment.md)** - Deploy, upgrade, verify, and manage programs
+- **[production-deployment.md](references/production-deployment.md)** - Verified builds for production (Anchor 0.32.1 workflow)
 
 ### Implementation Details
 
@@ -161,16 +168,19 @@ Essential knowledge for all Solana developers, regardless of framework:
 - Native: Manual `invoke_signed` with System Program → [pda.md#native](references/pda.md)
 
 **Transfer SPL tokens:**
-- Anchor: Use `anchor_spl::token::transfer` → [tokens.md#anchor](references/tokens.md)
-- Native: CPI to Token Program → [tokens.md#native](references/tokens.md)
+- Anchor: Use `anchor_spl::token::transfer` → [tokens-operations.md#transferring-tokens](references/tokens-operations.md)
+- Native: CPI to Token Program → [tokens-operations.md#transferring-tokens](references/tokens-operations.md)
 
 **Test your program:**
-- Both: Mollusk for fast unit tests → [testing.md#mollusk](references/testing.md)
-- Anchor: `anchor test` for integration tests → [testing.md#anchor](references/testing.md)
+- Both: Mollusk for fast unit tests → [testing-frameworks.md#mollusk-testing](references/testing-frameworks.md)
+- Anchor: `anchor test` for integration tests → [testing-frameworks.md#anchor-specific-testing](references/testing-frameworks.md)
 
 **Deploy to devnet:**
 - Anchor: `anchor deploy` → [deployment.md#anchor](references/deployment.md)
 - Native: `solana program deploy` → [deployment.md#native](references/deployment.md)
+
+**Deploy to production (verified builds):**
+- Both: `solana-verify build` + `solana program deploy` → [production-deployment.md](references/production-deployment.md)
 
 **Optimize compute units:**
 - Both: Profile with Mollusk bencher → [compute-optimization.md](references/compute-optimization.md)
@@ -335,7 +345,7 @@ members = [
 1. Read [accounts.md](references/accounts.md) - Understand the account model
 2. Read [anchor.md](references/anchor.md) - Start with Anchor framework
 3. Read [security.md](references/security.md) - Learn secure coding from the start
-4. Build a simple program following [testing.md](references/testing.md)
+4. Build a simple program following [testing-overview.md](references/testing-overview.md)
 5. Deploy to devnet using [deployment.md](references/deployment.md)
 
 **Coming from another blockchain?**
@@ -352,6 +362,6 @@ members = [
 
 **Building production apps?**
 1. Master [security considerations](references/pda.md#security)
-2. Use [testing.md](references/testing.md) for comprehensive tests
-3. Follow [deployment.md](references/deployment.md) for verified builds
+2. Use [testing-practices.md](references/testing-practices.md) for comprehensive best practices
+3. Follow [production-deployment.md](references/production-deployment.md) for verified builds
 4. Get security audit with `solana-security` skill
