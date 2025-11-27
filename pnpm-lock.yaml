@@ -22,7 +22,9 @@ importers:
 
   cloudflare-workers: {}
 
-  founder-mentor-coach: {}
+  founder-playbook: {}
+
+  foundry-solidity: {}
 
   gh-cli: {}
 
