@@ -4,6 +4,20 @@ Specific considerations for crypto founders, with focus on Solana ecosystem (Nov
 
 ## Market Context (November 2025)
 
+### Crypto Adoption (a16z State of Crypto 2025)
+
+**Market Size** ([a16z State of Crypto 2025](https://a16zcrypto.com/posts/article/state-of-crypto-report-2025/))
+- **Total market cap**: Crossed $4 trillion (first time)
+- **Crypto owners globally**: 716 million (+16% YoY)
+- **Active onchain users**: 40-70 million
+- **Mobile wallet users**: All-time highs (+20% YoY)
+- **Only 5.6-9.8% of owners** actively transact onchain—massive builder opportunity
+
+**Infrastructure Readiness**
+- **3,400+ TPS** aggregate across major networks (100x growth in 5 years)
+- **L2 fees dropped**: ~$24 (2021) → <$0.01 (2025)
+- **Blockspace**: Now "cheap and abundant" per a16z
+
 ### Current Conditions
 
 **Market State**
@@ -20,22 +34,25 @@ Specific considerations for crypto founders, with focus on Solana ecosystem (Nov
 
 ### Funding Reality
 
-**Strong Despite Volatility** (Sources: [Galaxy Digital](https://www.galaxy.com/insights/research/crypto-venture-capital-q2-2025/), [CoinGecko](https://www.coingecko.com/research))
-- **$11.5B invested in crypto in 2024** across 2,153 deals (Galaxy Digital Q4 2024 Report)
-- Q1 2025: ~$4.9-6B raised (range depends on inclusion of Binance's $2B strategic raise)
-- Q2 2025: **$10.03B** — first quarter exceeding $10B in 3 years (since Q1 2022)
-- Institutional momentum: Circle IPO, Uphold IPO exploration
-- 100+ strategic M&A deals completed
+**Q1-Q3 2025: $22.8B Total** (Sources: [Galaxy Digital Q3 2025](https://www.galaxy.com/insights/research/crypto-blockchain-venture-capital-q3), [CryptoRank Q3 2025](https://cryptorank.io/insights/reports/crypto-fundraising-report-Q3-25))
+- **Q1 2025:** $4.8B (incl. $2B Binance/MGX—largest crypto VC deal ever)
+- **Q2 2025:** $10B+—first quarter exceeding $10B in 3 years
+- **Q3 2025:** $4.65B across 415 deals (7 deals = 50% of capital)
+- **Median deal size:** $4.5M (all-time high) ([Galaxy Q3 2025](https://www.galaxy.com/insights/research/crypto-blockchain-venture-capital-q3))
+- **US dominance:** 40-47% of all deals and capital
+- **IPOs replacing tokens:** Circle IPO (5x return), Strategy $2.47B IPO, Bullish $1.11B IPO
+- **GENIUS Act passed (Jul 2025)**—first federal stablecoin framework
+- **Seed→Series A graduation:** Only 17% of seed-funded crypto companies reach Series A ([funding.decentralised.co](https://funding.decentralised.co/))
 
-**Priority Sectors by VC Evidence** (Sources: Galaxy Digital, Messari, DeFiLlama)
+**Priority Sectors by VC Evidence** (Sources: [Galaxy Digital](https://www.galaxy.com/insights/research/crypto-blockchain-venture-capital-q3), [a16z State of Crypto 2025](https://a16zcrypto.com/posts/article/state-of-crypto-report-2025/), [CryptoRank](https://cryptorank.io/insights/reports/crypto-fundraising-report-Q3-25))
 | Sector | Signal |
 |--------|--------|
-| Stablecoins/Payments | $46T transaction volume; "strong PMF" – Galaxy |
-| DeFi (Solana-focused) | Multicoin "expanding Solana DeFi exposure" |
-| Crypto-AI Integration | Top thesis for Pantera |
-| DePIN | $3.5T projected by 2028 (Messari); Helium 1.4M daily users |
-| Infrastructure/Scaling | $5.5B in 2024, 57% YoY increase (Galaxy Digital) |
-| RWAs/Tokenization | $30B tokenized on-chain (DeFiLlama RWA tracker) |
+| Stablecoins/Payments | $46T transaction volume (106% YoY); $300B+ supply; #17 US Treasury holder – a16z |
+| CeFi + Infrastructure | >60% of Q3 2025 funding; IPO exits proving business models – CryptoRank |
+| DeFi (Solana-focused) | ~20% of spot trading on DEXs; Hyperliquid $1B+ annualized revenue – a16z |
+| Crypto-AI Integration | $30T agent economy by 2030 (Gartner via a16z); top thesis for Pantera |
+| DePIN | $3.5T projected by 2028 (WEF); Helium 1.4M daily users, 111K hotspots |
+| RWAs/Tokenization | $30B tokenized on-chain; 4x growth in 2 years – a16z |
 
 **What's Declining**: Security tooling, generic interoperability, NFT speculation, enterprise blockchain.
 
@@ -47,24 +64,66 @@ Specific considerations for crypto founders, with focus on Solana ecosystem (Nov
 
 **Rob Hadick** (Dragonfly): "Don't see funding levels reaching 2021-2022 highs for a very long time." Established companies (founded ~2018) getting majority of capital; newer companies get deal count but smaller checks.
 
+### Global Developer Landscape (Electric Capital 2024)
+
+**Geographic Shift** ([Electric Capital Developer Report 2024](https://developerreport.com/developer-report))
+- **Asia overtook North America** as #1 region for crypto developers (32% vs 24%)
+- **India**: Rose from 10th to 2nd globally, contributing 17% of new developers
+- **US share dropped**: From 38% (2015) to 19% (2024)—81% of crypto devs now outside US
+- **34% of developers** now work on multiple chains (up from <10% in 2015)
+
+**Developer Quality vs. Quantity**
+- Total monthly active devs: 23,613 (-7% YoY)
+- BUT established developers (2+ years): **+27% YoY** (all-time high)
+- 70% of all code commits from 2+ year developers
+- 80% of developer losses from part-time/one-time contributors
+
+**Ecosystem Rankings**
+| Ecosystem | Monthly Active Devs | New Devs (2024) | YoY Growth |
+|-----------|---------------------|-----------------|------------|
+| Ethereum (+ L2s) | 31,869 | 16,181 | - |
+| Solana | 17,708 | 7,625 | +83% |
+| Bitcoin | ~1,200 | 7,400+ | Stable |
+
 ## Solana Ecosystem
 
-### Network Performance (H1 2025)
+### Network Performance (Q3 2025)
 
-Sources: [Solana Beach](https://solanabeach.io/), [Helius State of Solana Reports](https://www.helius.dev/blog), [DeFiLlama](https://defillama.com/)
+Source: [Messari State of Solana Q3 2025](https://messari.io/report/state-of-solana-q3-2025)
 
-- **Uptime**: 15+ months continuous (longest since launch)
-- **Throughput**: 162M+ transactions daily
-- **Fees**: Median <$0.01 even during peak demand
-- **Speed**: ~390ms slot times
-- **DEX Dominance**: 81% of all crypto DEX transactions (DeFiLlama)
+- **Avg Daily Non-Vote Txs**: 95.9M — real user activity (excludes validator votes)
+- **Avg Daily Fee Payers**: 2.8M unique addresses
+- **Avg Tx Fee**: $0.012 (0.000061 SOL)
+- **Median Tx Fee**: $0.0012 (0.000006 SOL) — local fee markets keep costs low even during spikes
+- **Active Validators**: 963 across 38 countries, 208 data centers
+- **Nakamoto Coefficient**: 20 — above median of other networks
+- **Uptime**: 16+ months continuous (longest since launch)
+- **Peak TPS**: Briefly hit 100,000 TPS under stress test
 
-### Economic Strength
+### Economic Strength (Q3 2025)
 
-- **Real Economic Value**: $550M+ monthly (Helius)
-- **DEX Volume**: $890B+ in first 5 months (DeFiLlama)
-- **TVL**: $9.6B across protocols (DeFiLlama)
-- **Developer Growth**: 7,625 new developers in 2024 (Electric Capital Developer Report)
+Source: [Messari State of Solana Q3 2025](https://messari.io/report/state-of-solana-q3-2025)
+
+- **DeFi TVL**: $11.5B (+32.7% QoQ) — #2 among all networks after surpassing TRON
+- **Stablecoin Market Cap**: $14.1B (+36.5% QoQ, ATH) — USDC $10B (71%), USDT $2.4B (17%)
+- **Chain GDP (App Revenue)**: $584.3M — PumpFun $118M, Jupiter $93M, Axiom $85M
+- **App Revenue Capture Ratio**: 262.8% — apps earn $2.63 for every $1 in tx fees
+- **Q3 REV**: $222.3M — highest of all blockchains (base fees + priority fees + MEV tips)
+- **Avg Daily DEX Volume**: $4B spot (+17% QoQ), $1.6B perps (+93% QoQ)
+- **RWA Value**: $682.2M (+41.9% QoQ) — USDY, BUIDL, ONyc leading
+- **Developer Growth**: #1 for new developers globally with 7,625 new devs in 2024 (+83% YoY); 17,708 active total ([Electric Capital 2024](https://developerreport.com/developer-report))
+- **Only country where Solana is #1**: India (27% of new Indian devs chose Solana)
+
+### Institutional Adoption
+
+Source: [Messari State of Solana Q3 2025](https://messari.io/report/state-of-solana-q3-2025)
+
+- **Rex Osprey Solana Staking ETF (SSK)**: First US staking crypto ETF, launched July 2, 2025 — $330.2M flows since inception
+- **9 additional SOL ETF filings** pending approval (VanEck, Invesco, Galaxy, others)
+- **Digital Asset Treasury Companies (DATs)**: 20 companies hold 18.9M SOL ($3.9B)
+  - Forward Industries: 6.8M SOL (largest) — $1.65B raise led by Galaxy, Jump, Multicoin
+  - Solana Company: 2.2M SOL (backed by Pantera, Summer Capital)
+- **Total Staked**: 409.6M SOL ($85.5B) — 67.1% of circulating supply
 
 ### Why Solana Wins for Payments/Infrastructure
 
@@ -520,11 +579,14 @@ Marketing roadmap commitments you can't ship.
 - Analytics: Dune, Flipside
 - Testing: Bankrun, Devnet
 
-### Content
-- Helius Blog (ecosystem reports)
-- Galaxy Research
-- Messari
-- Solana Compass
+### Content & Research (Free)
+- [Galaxy Digital Research](https://www.galaxy.com/insights/research/) - Quarterly VC reports, institutional grade
+- [a16z State of Crypto](https://a16zcrypto.com/posts/article/state-of-crypto-report-2025/) - Annual comprehensive report
+- [Electric Capital Developer Report](https://developerreport.com/developer-report) - Developer ecosystem data
+- [CryptoRank Reports](https://cryptorank.io/insights/reports/) - Quarterly funding analysis
+- [funding.decentralised.co](https://funding.decentralised.co/) - 15K+ funding rounds database (free)
+- Helius Blog - Solana ecosystem reports
+- Messari - Some free reports, enterprise paywalled
 
 ### Events
 - Breakpoint (annual conference)

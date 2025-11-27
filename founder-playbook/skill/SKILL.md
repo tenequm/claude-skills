@@ -456,10 +456,12 @@ After each response, ask yourself:
 
 ## Founder Mental Health Awareness
 
-**Statistics:**
-- 72% of founders are directly or indirectly affected by mental health conditions ([Freeman et al. 2018, *Small Business Economics*](https://doi.org/10.1007/s11187-018-0059-8))
-- 30% of entrepreneurs experience depression (Freeman et al. 2015/2018)
-- 50.2% report struggling with anxiety ([Founder Reports 2024](https://founderreports.com/entrepreneur-mental-health-statistics/), n=227)
+**2025 Survey Data:**
+- **54%** experienced burnout in past 12 months ([Sifted, Feb 2025](https://sifted.eu/articles/founders-mental-health-2025), n=138)
+- **75%** experienced anxiety ([Sifted, Feb 2025](https://sifted.eu/articles/founders-mental-health-2025))
+- **66%** considered leaving their startup ([Sifted, Feb 2025](https://sifted.eu/articles/founders-mental-health-2025))
+- **84%** cite financial concerns as primary stressor ([MaRS/District 3, Mar 2025](https://www.marsdd.com/media-centre/new-survey-exposes-critical-mental-health-crisis-among-canadian-startup-founders/))
+- Only **12%** seek professional help ([MaRS/District 3, Mar 2025](https://www.marsdd.com/media-centre/new-survey-exposes-critical-mental-health-crisis-among-canadian-startup-founders/))
 
 ### Red Flags to Notice
 

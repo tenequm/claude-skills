@@ -7,24 +7,23 @@ Complete survival guide for pre-revenue technical founders navigating the curren
 ### What's Changed
 
 **AI-Driven Transformation**
-- AI captured **$131.5B globally in 2024**—35.7% of all VC investment, up 52% YoY ([PitchBook-NVCA Venture Monitor, Jan 2025](https://pitchbook.com/news/articles/ai-startups-grabbed-a-third-of-global-vc-dollars-in-2024))
-- By Q4 2024, AI represented **50.8% of global VC funding** (PitchBook Q4 2024)
-- Solo founders have unprecedented leverage (AI tools = force multiplier)
-- 35% of 2024 startups were solo-founded ([Carta Founder Ownership Report 2025](https://carta.com/blog/founder-ownership-report-2025/))
-- Build products that previously required entire teams
+- AI captured **52-63% of all VC funding** in 2025—$192.7B YTD through Q3 ([PitchBook Q3 2025](https://pitchbook.com/news/reports/q3-2025-pitchbook-nvca-venture-monitor))
+- **41% of all VC dollars** went to just 10 companies in 2025 ([PitchBook, Aug 2025](https://pitchbook.com/news/articles/41-of-all-vc-dollars-deployed-this-year-have-gone-to-just-10-startups))
+- Solo founders have unprecedented leverage—SOTA models enable one person to build what required teams
+- 35% of 2024 startups were solo-founded ([Carta Founder Ownership Report 2025](https://carta.com/data/founder-ownership/))
 
 **Traction Gauntlet**
 - 2021's "idea funding" era is over
-- Pre-seed requires 5-10 paying customers minimum
+- Pre-seed requires MVP + users; median pre-seed raise: **$700K** ([Metal.so 2025](https://www.metal.so/collections/seed-to-series-a-timeline-saas-startups-2025))
 - Seed rounds require $10K+ MRR with 10%+ monthly growth
-- **Time between funding rounds hit decade highs**: Seed→Series A now 774 days (84% longer than Q4 2021) ([Carta, March 2025](https://carta.com/blog/startup-metrics-trends-q4-2024/))
-- Deals increasingly concentrate in fewer startups—value up 30% while count only up 14%
+- **Series A crunch is real**: Only **15.4%** of seed-funded startups raise Series A within 2 years—down from 30.6% for 2018 cohorts ([Carta/SaaStr, May 2025](https://www.saastr.com/carta-the-average-time-from-seed-to-series-a-has-hit-2-2-years-and-longer-from-series-a-to-series-b/))
+- Time between rounds: Seed→Series A now **2.2 years** ([Carta Q3 2025](https://carta.com/data/state-of-private-markets-q3-2025/))
 
 **YC Dynamics (2025)**
-- Expanded to 4 cohorts annually with smaller batches (~100-130 vs. previous 256)
 - Standard deal: **$500K ($125K for 7% + $375K uncapped SAFE)** ([Y Combinator official](https://www.ycombinator.com/deal))
-- Over 50% of Spring 2025 batch builds agentic AI
-- Median seed round stabilized at **$3.1M** (up from $1.5-2M in 2024)
+- Summer 2025 batch: **160-169 startups**, 60%+ are AI companies ([Extruct.ai, Sep 2025](https://www.extruct.ai/blog/ycs25/))
+- Spring 2025: **67 AI agent companies** (46.5% of batch) ([PitchBook, Jun 2025](https://pitchbook.com/news/articles/y-combinator-is-going-all-in-on-ai-agents-making-up-nearly-50-of-latest-batch))
+- Median seed round: **$3.5M** (record high in 2025) ([Carta Q3 2025](https://carta.com/data/state-of-private-markets-q3-2025/))
 
 **Pre-Revenue Funding Reality** ([Right Side Capital Management survey, July 2024](https://www.rightsidecapital.com/blog/report-how-are-pre-seed-and-seed-vc-firms-investing-in-2024), n=110 VCs)
 - 46.3% of investors will fund pre-revenue at pre-seed
@@ -361,7 +360,7 @@ $50K-500K typical for pre-revenue with first customers.
 
 **Reality**: Solo founders are 2.6x more likely to own ongoing, for-profit ventures than teams of 3+ co-founders ([Greenberg & Mollick 2018, Wharton/NYU](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3107898)). Of 6,191 startups with successful exits (IPO or M&A), slightly more than half had solo founders.
 
-**The paradox**: Solo founders were 35% of all startups in 2024 but only 17% of those closing VC rounds ([Carta 2025](https://carta.com/blog/founder-ownership-report-2025/)). VCs have bias, not data.
+**The paradox**: Solo founders were 35% of all startups in 2024 but only 17% of those closing VC rounds ([Carta 2025](https://carta.com/data/founder-ownership/)). VCs have bias, not data.
 
 **Better question**: "Can you hire for skill gaps instead of giving away equity?"
 
@@ -491,11 +490,14 @@ If not "hell yes" to at least one, say no.
 
 ## Mental Health & Resilience
 
-### The Reality
+### The Reality (2025 Survey Data)
 
-- 72% of founders are directly or indirectly affected by mental health conditions ([Freeman et al. 2018, *Small Business Economics*](https://doi.org/10.1007/s11187-018-0059-8))
-- 30% of entrepreneurs experience depression (Freeman et al. 2015/2018)
-- 82% feel they can't discuss mental health openly (industry surveys)
+- **54%** experienced burnout in past 12 months ([Sifted, Feb 2025](https://sifted.eu/articles/founders-mental-health-2025), n=138)
+- **75%** experienced anxiety ([Sifted, Feb 2025](https://sifted.eu/articles/founders-mental-health-2025))
+- **66%** considered leaving their startup ([Sifted, Feb 2025](https://sifted.eu/articles/founders-mental-health-2025))
+- **84%** cite financial concerns as #1 stressor ([MaRS/District 3, Mar 2025](https://www.marsdd.com/media-centre/new-survey-exposes-critical-mental-health-crisis-among-canadian-startup-founders/))
+- Only **12%** seek professional mental health support ([MaRS/District 3, Mar 2025](https://www.marsdd.com/media-centre/new-survey-exposes-critical-mental-health-crisis-among-canadian-startup-founders/))
+- Women founders: **65%** burnout vs 42% men ([MaRS/District 3, Mar 2025](https://www.marsdd.com/media-centre/new-survey-exposes-critical-mental-health-crisis-among-canadian-startup-founders/))
 
 ### Non-Negotiables
 
