@@ -56,9 +56,18 @@ cd [plugin] && pnpm validate     # Single plugin
 ### Release
 
 ```bash
-/release                         # Interactive release
+/release                         # Interactive release (human)
 pnpm nx release --dry-run        # Preview changes
-pnpm nx release --projects=name  # Specific plugin
+```
+
+**Non-interactive (for Claude Code / CI):**
+```bash
+# MUST use version specifier to bypass version prompt
+pnpm nx release patch --projects=name
+pnpm nx release minor --projects=name
+
+# Publishing is disabled in nx.json (publish: false)
+# Only version specifier is needed to bypass prompts
 ```
 
 ## Critical Rules

@@ -73,15 +73,19 @@ pnpm nx release --dry-run
 
 ## Non-Interactive Mode (Claude Code / CI)
 
-To bypass interactive prompts, use these flags:
+To bypass interactive prompts:
 
 - **Version specifier** (`minor`/`patch`/`major`) - bypasses version prompt
-- **`--skip-publish`** - bypasses publish prompt
 - **`--first-release`** - required for new plugins at version 0.0.0
 
+Publishing is disabled in `nx.json` (`"publish": false`), so no publish flags needed.
+
 ```bash
+# Example: patch release
+pnpm nx release patch --projects=plugin-name
+
 # Example: first release of a new plugin
-pnpm nx release minor --projects=new-plugin --first-release --skip-publish
+pnpm nx release minor --projects=new-plugin --first-release
 ```
 
 If pre-commit hooks modify files and the commit fails, stage changes and commit manually, then create tags and GitHub releases.

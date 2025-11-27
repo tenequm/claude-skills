@@ -47,6 +47,8 @@
         }
       },
       "postChangelogCommand": "bash scripts/sync-marketplace.sh"
-    }
+    },
+
+    "publish": false
   }
 }
