@@ -1,6 +1,6 @@
 # Release Skills
 
-Execute a manual release of all plugins with pending changesets.
+Execute a release using Nx Release for independent plugin versioning.
 
 ## Pre-flight Checks
 
@@ -23,135 +23,119 @@ Execute a manual release of all plugins with pending changesets.
    ```
    If behind, run `git pull --rebase`.
 
-4. **Check for pending changesets:**
+4. **Check for unreleased changes:**
    ```bash
-   ls .changeset/*.md 2>/dev/null | grep -v README || echo "NO_CHANGESETS"
+   pnpm nx release --dry-run
    ```
-   If no changesets found (only README.md), report "No pending changesets to release" and stop.
+   This will show which plugins have unreleased commits.
 
 ## Release Process
 
-5. **Run changeset version to bump versions:**
-   ```bash
-   pnpm changeset version
-   ```
-   This will:
-   - Bump package.json versions based on changesets
-   - Generate/update CHANGELOG.md files
-   - Delete consumed changeset files
+### Option 1: Release All Changed Plugins (Recommended)
 
-6. **Sync marketplace.json with new versions:**
-   ```bash
-   pnpm sync-marketplace
-   ```
+```bash
+# Interactive release - prompts for version bump per plugin
+pnpm nx release
+```
 
-7. **Install to update lockfile:**
-   ```bash
-   pnpm install
-   ```
+This will:
+1. Run validation (cached, fast)
+2. Prompt for version bump for each changed plugin (major/minor/patch)
+3. Update package.json files
+4. Generate project-level CHANGELOG.md files
+5. Sync marketplace.json (via postChangelogCommand hook)
+6. Create commit: `chore(release): plugin-name@version`
+7. Create git tags: `plugin-name@version`
+8. Push to GitHub
+9. Create GitHub releases with changelog content
+10. Prompt to publish (if needed)
 
-8. **Validate all skills pass quality checks:**
-   ```bash
-   pnpm -r validate
-   ```
-   If validation fails, stop and report issues.
+### Option 2: Release Specific Version
 
-9. **Create version commit:**
-   ```bash
-   git add -A
-   git commit -m "chore: release skills"
-   ```
+```bash
+# Automatically bump to specific version for all changed plugins
+pnpm nx release patch   # or minor, major
+```
 
-10. **Create git tags for each released package:**
+### Option 3: Release Specific Plugins
 
-    **Option A: Use the helper script (recommended):**
-    ```bash
-    bash .claude/commands/scripts/create-release-tags.sh
-    ```
+```bash
+# Release only specific plugins
+pnpm nx release --projects=solana,gh-cli
+```
 
-    **Option B: Manual tag creation:**
-    First, identify which packages were released by checking for CHANGELOG.md files:
-    ```bash
-    find . -maxdepth 2 -name "CHANGELOG.md" -not -path "./.claude/*" | sed 's|/CHANGELOG.md||' | sed 's|^\./||'
-    ```
+### Option 4: Preview First (Dry Run)
 
-    Then, for each package directory found, create a tag:
-    ```bash
-    # Example for a single package (repeat for each found):
-    pkg_dir="skill-factory"
-    name=$(jq -r '.name' "$pkg_dir/package.json")
-    version=$(jq -r '.version' "$pkg_dir/package.json")
-    tag="${name}@${version}"
-
-    # Check if tag already exists
-    if git tag -l "$tag" | grep -q .; then
-      echo "Tag already exists: $tag"
-    else
-      git tag "$tag"
-      echo "Created tag: $tag"
-    fi
-    ```
-
-    **Note:** The helper script automates tag creation for all packages with CHANGELOG.md files. Use manual creation if you need more control over which tags to create.
-
-11. **Push commits and tags:**
-    ```bash
-    git push origin main --follow-tags
-    ```
-
-    If any tags weren't pushed with --follow-tags, push them individually:
-    ```bash
-    # Example: Push specific tag if needed
-    git push origin skill-factory-skill@0.2.0
-    ```
-
-12. **Create GitHub releases for each new tag:**
-
-    **Option A: Use the helper script (recommended):**
-    ```bash
-    bash .claude/commands/scripts/create-github-releases.sh
-    ```
-
-    **Option B: Manual release creation:**
-    For each tag created, extract the changelog entry and create a release.
-
-    First, read the CHANGELOG.md to extract the content for the new version:
-    ```bash
-    # Read the CHANGELOG.md file to get the release notes
-    # For example, for skill-factory v0.2.0:
-    cat skill-factory/CHANGELOG.md
-    ```
-
-    Then create the GitHub release with the extracted notes:
-    ```bash
-    # Example for skill-factory-skill@0.2.0
-    gh release create "skill-factory-skill@0.2.0" \
-      --title "skill-factory-skill@0.2.0" \
-      --notes "## 0.2.0
-
-### Minor Changes
-
-- Add comprehensive Anthropic best practices documentation
-  - [Detailed changelog content from CHANGELOG.md]"
-    ```
-
-    **Note:** The helper script automates release creation by extracting changelog content and creating releases for all new tags. Extract the content between the version header (e.g., `## 0.2.0`) and the next version header (or end of file) from the CHANGELOG.md file if creating releases manually.
+```bash
+# See what would happen without making changes
+pnpm nx release --dry-run
+```
 
 ## Post-Release
 
-13. **Report summary:**
-    List all released packages with their versions and links to GitHub releases.
+After the release completes, Nx will:
+- ✅ Create version commits
+- ✅ Create git tags (pattern: `plugin-name@version`)
+- ✅ Push commits and tags to GitHub
+- ✅ Create GitHub releases with changelog content (as drafts initially)
+
+**Publish GitHub Releases:**
+
+If releases are created as drafts, publish them:
+```bash
+# List draft releases
+gh release list --limit 10
+
+# Publish a draft release
+gh release edit plugin-name@version --draft=false
+```
+
+**Report summary:**
+List all released packages with their versions and links to GitHub releases.
+
+## Release Configuration
+
+All release configuration is in `nx.json`:
+- **Independent versioning**: Each plugin has its own version
+- **Git tags**: `{projectName}@{version}` pattern
+- **Changelogs**: Generated in each plugin's CHANGELOG.md
+- **GitHub releases**: Automatic with changelog content
+- **Validation**: Runs before versioning (cached)
+- **Marketplace sync**: Automatic via `postChangelogCommand`
 
 ## Error Handling
 
-- If any step fails, stop immediately and report the error
+- If any step fails, Nx will stop immediately and report the error
 - Do NOT force push or skip any checks
-- If changeset version fails, the changesets may be malformed - check their syntax
 - If validation fails, fix the issues before releasing
+- Nx creates one commit per release, with all version changes
 
 ## Important Notes
 
-- This is a MANUAL release process - no automation
-- Always review the generated CHANGELOGs before pushing
-- Tags follow the pattern: `package-name@version` (e.g., `solana@0.1.0`)
-- GitHub releases are created from the CHANGELOG content
+- Nx Release uses conventional commits to generate changelogs
+- Tags follow the pattern: `plugin-name@version` (e.g., `solana@0.3.0`)
+- GitHub releases are created automatically from CHANGELOG content
+- Local caching makes repeated validation instant
+- Affected detection only releases plugins with changes since last tag
+
+## Common Commands
+
+```bash
+# Release workflow (full)
+pnpm nx release
+
+# Just version (no publish)
+pnpm nx release version
+
+# Just changelog (after versioning)
+pnpm nx release changelog
+
+# Just publish (after versioning)
+pnpm nx release publish
+
+# Target specific plugins
+pnpm nx release --projects=solana
+
+# Preview without changes
+pnpm nx release --dry-run
+```

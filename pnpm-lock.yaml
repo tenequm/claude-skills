@@ -22,6 +22,8 @@ importers:
 
   cloudflare-workers: {}
 
+  founder-mentor-coach: {}
+
   gh-cli: {}
 
   skill-factory: {}

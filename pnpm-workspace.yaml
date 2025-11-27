@@ -8,3 +8,5 @@ packages:
   - 'solana'
   - 'styling-with-tailwind'
   - 'tanstack-query'
+  - 'founder-playbook'
+  - 'foundry-solidity'

@@ -25,7 +25,7 @@ uvx pre-commit install
 
 ## Making Changes to Skills
 
-When you modify a skill, create a changeset to document the change:
+When you modify a skill, simply commit your changes - Nx Release will handle versioning:
 
 ```bash
 # 1. Make your changes to a skill
@@ -35,33 +35,69 @@ vim gh-cli/skill/SKILL.md
 cd gh-cli
 pnpm validate
 
-# 3. Create a changeset
+# 3. Commit with conventional commits format
 cd ..
-pnpm changeset
-# Follow prompts:
-#   - Select which skill(s) changed
-#   - Choose bump type (patch/minor/major)
-#   - Write a summary of changes
-
-# 4. Commit everything including the changeset file
 git add .
 git commit -m "feat(gh-cli): add trending repos section"
+# or
+git commit -m "fix(gh-cli): correct API endpoint URL"
 
-# 5. Push
+# 4. Push
 git push
 ```
 
-**What happens next:**
-1. GitHub Actions detects your changeset
-2. A "Version Packages" PR is created/updated automatically
-3. When merged: versions bump, marketplace.json updates, git tags created
-4. Users can install: `/plugin marketplace update tenequm-plugins`
+**Conventional Commit Format:**
+```
+type(scope): description
+
+Examples:
+- feat(solana): add production deployment guide
+- fix(gh-cli): correct repo search syntax
+- docs(cloudflare-workers): update Workers AI examples
+```
+
+**Common Types:**
+- `feat`: New features (minor version bump)
+- `fix`: Bug fixes (patch version bump)
+- `docs`: Documentation only changes (patch version bump)
+- `refactor`: Code refactoring (patch version bump)
+- `BREAKING CHANGE`: Breaking changes (major version bump)
+
+## Releasing
+
+Releases are done manually using Nx Release:
+
+```bash
+# Release all changed plugins (interactive)
+pnpm nx release
+
+# Release specific plugins
+pnpm nx release --projects=solana,gh-cli
+
+# Release with automatic version bump
+pnpm nx release minor  # or patch, major
+
+# Preview release without making changes
+pnpm nx release --dry-run
+```
+
+**What happens during release:**
+1. Nx validates all plugins (cached, fast)
+2. Prompts for version bump per plugin
+3. Updates package.json files
+4. Generates CHANGELOG.md from conventional commits
+5. Syncs marketplace.json automatically
+6. Creates commit and git tags
+7. Pushes to GitHub
+8. Creates GitHub releases with changelogs
 
 ## Versioning Guidelines
 
-- **Patch** (1.0.x): Bug fixes, typos, link corrections, small improvements
-- **Minor** (1.x.0): New features, sections, examples, significant additions
-- **Major** (x.0.0): Breaking changes (skill structure changes, removed features)
+Nx Release determines version bumps from conventional commits:
+
+- **Patch** (0.1.x): `fix:`, `docs:`, `refactor:`, `chore:`
+- **Minor** (0.x.0): `feat:`
+- **Major** (x.0.0): `BREAKING CHANGE:` in commit body or footer
 
 ## Validation
 
@@ -73,6 +109,8 @@ pnpm validate
 # Validate all skills in workspace
 cd ..
 pnpm validate
+
+# Nx caches validation - second run is instant!
 ```
 
 ## Creating New Skills
@@ -107,33 +145,47 @@ uvx pre-commit run --all-files
 - YAML syntax
 - No trailing whitespace
 
+**Note:** Nx caching speeds up pre-commit validation significantly!
+
 ### Continuous Integration
 
 GitHub Actions automatically runs these checks on every push and pull request:
 
-- Skill validation
+- Skill validation (with Nx caching)
 - Pre-commit checks
-- Automated releases via Changesets
+- Automated releases (manual trigger)
 
 ### Repository Structure
 
 ```
 claude-plugins/
-├── .changeset/              # Changesets for version management
+├── .nx/                     # Nx cache (gitignored)
+├── nx.json                  # Nx configuration for caching and releases
 ├── .claude-plugin/          # Plugin marketplace configuration
 │   └── marketplace.json     # Plugin registry (auto-synced)
 ├── .github/workflows/       # CI/CD workflows
 ├── chrome-extension-wxt/    # Chrome extension plugin
 │   ├── package.json        # Plugin metadata with version
+│   ├── project.json        # Nx project configuration
+│   ├── CHANGELOG.md        # Auto-generated changelog
 │   └── skill/              # Skill content
 │       ├── SKILL.md
 │       └── references/
 ├── gh-cli/                  # GitHub CLI plugin
 │   ├── package.json
+│   ├── project.json
+│   ├── CHANGELOG.md
 │   └── skill/
 └── scripts/                 # Build and release scripts
     └── sync-marketplace.sh  # Syncs versions to marketplace.json
 ```
+
+## Technology Stack
+
+- **Nx**: Monorepo tooling with caching and release management
+- **pnpm**: Fast, disk-efficient package manager
+- **Conventional Commits**: Semantic versioning from commit messages
+- **pre-commit**: Git hook framework for validation
 
 ## Code of Conduct
 

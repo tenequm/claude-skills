@@ -1,0 +1,25 @@
+{
+  "name": "founder-playbook",
+  "$schema": "../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "founder-playbook",
+  "projectType": "library",
+  "targets": {
+    "validate": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "pnpm validate",
+        "cwd": "founder-playbook"
+      },
+      "cache": true,
+      "inputs": [
+        "{projectRoot}/skill/**/*.md",
+        "{projectRoot}/package.json"
+      ]
+    }
+  },
+  "release": {
+    "version": {
+      "generator": "@nx/js:release-version"
+    }
+  }
+}

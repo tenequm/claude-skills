@@ -1,0 +1,12 @@
+{
+  "name": "foundry-solidity",
+  "projectType": "library",
+  "release": {
+    "version": {
+      "generatorOptions": {
+        "packageRoot": "foundry-solidity",
+        "currentVersionResolver": "disk"
+      }
+    }
+  }
+}
