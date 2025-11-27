@@ -91,7 +91,7 @@
       "name": "founder-playbook",
       "source": "./",
       "description": "Skill: Decision validation and thinking frameworks for startup founders - pressure-test decisions with proven methodologies and crypto/web3 knowledge",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "author": {
         "name": "Misha Kolesnik",
         "email": "misha@kolesnik.io"
