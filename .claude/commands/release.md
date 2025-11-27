@@ -71,6 +71,21 @@ pnpm nx release --projects=solana,gh-cli
 pnpm nx release --dry-run
 ```
 
+## Non-Interactive Mode (Claude Code / CI)
+
+To bypass interactive prompts, use these flags:
+
+- **Version specifier** (`minor`/`patch`/`major`) - bypasses version prompt
+- **`--skip-publish`** - bypasses publish prompt
+- **`--first-release`** - required for new plugins at version 0.0.0
+
+```bash
+# Example: first release of a new plugin
+pnpm nx release minor --projects=new-plugin --first-release --skip-publish
+```
+
+If pre-commit hooks modify files and the commit fails, stage changes and commit manually, then create tags and GitHub releases.
+
 ## Post-Release
 
 After the release completes, Nx will:
